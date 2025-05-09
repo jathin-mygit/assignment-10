@@ -15,12 +15,17 @@ function handleChange(event){
     })
 }
 function submitNote(event){
+    event.preventDefault()
+    // Validate that both title and content are not empty
+    if (note.title.trim() === "" || note.content.trim() === "") {
+        return; // Don't proceed if either field is empty
+    }
+    
     props.onAdd(note)
     setNote({
         title : "",
         content : ""
     })
-    event.preventDefault()
 }
 
     return(
